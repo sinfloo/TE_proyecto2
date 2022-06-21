@@ -45,7 +45,7 @@ public class Controlador extends HttpServlet {
 
     double totalPagar;
 
-    String numeroventa;
+    String numeroventa="0";
     VentaDAO vdao = new VentaDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -142,6 +142,7 @@ public class Controlador extends HttpServlet {
                     c.setCi(ci);
                     c = cdao.buscar(ci);
                     request.setAttribute("c", c);
+                    request.setAttribute("nventa", numeroventa);
                     break;
                 case "BuscarProducto":
                     int id_producto = Integer.parseInt(request.getParameter("codigoproducto"));
@@ -150,6 +151,7 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("producto", p);
                     request.setAttribute("lista", lista);
                     request.setAttribute("totalpagar", totalPagar);
+                    request.setAttribute("nventa", numeroventa);
                     break;
                 case "Agregar":
                     request.setAttribute("c", c);
@@ -177,6 +179,7 @@ public class Controlador extends HttpServlet {
                     }
                     request.setAttribute("totalpagar", totalPagar);
                     request.setAttribute("lista", lista);
+                    request.setAttribute("nventa", numeroventa);
                     break;
                     
                 default:
